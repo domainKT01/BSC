@@ -12,7 +12,7 @@
 
 		<button type="button" class="btn btn-dark">Acerca de Nosotros</button>
 
-		<button type="button" class="btn btn-dark">Iniciar sesion</button>
+		<button type="button" class="btn btn-dark"> Iniciar sesion</button>
 
 		<span><img src="banco_cordoba.png" /></span>
 
@@ -23,7 +23,7 @@
 
 @section('main')
 
-	<form action="{{ route('forms.store') }}" method="post">
+	<form action="{{ route('forms.store') }}" method="POST">
 
         @csrf
 

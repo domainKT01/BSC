@@ -19,13 +19,14 @@
 
 @section('main')
 
-	<form>
+	<form action="{{ route('forms.store') }}" method="POST">
+		@csrf
 	  <div class="row g-3 align-items-center">
   		<div class="col-auto">
-    		<label for="inputEmail6" class="col-form-label">Email</label>
+    		<label for="inputEmail6" class="col-form-label">Usuario</label>
   		</div>
   		<div class="col-auto">
-    		<input type="email" id="inputEmail6" class="form-control" aria-describedby="emailHelpInline">
+    		<input type="text" id="inputEmail6" class="form-control" aria-describedby="emailHelpInline" name="name">
   		</div>
   		<div class="col-auto">
     		<span id="emailHelpInline" class="form-text">
@@ -38,7 +39,7 @@
     		<label for="inputPassword6" class="col-form-label">Password</label>
   		</div>
   		<div class="col-auto">
-    		<input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+    		<input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" name="password">
   		</div>
   		<div class="col-auto">
     		<span id="passwordHelpInline" class="form-text">

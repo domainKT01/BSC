@@ -3,25 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
+use Nette\Utils\Strings;
+use App\Http\Controllers\inData;
 
-class formController extends Controller
-{
+class formController extends Controller{ 
     
     public function store(Request $request){
 
-        $user = new User();
+        $data =$request->all();
 
-        $user->name = $request->name;
+        inData::SignUp($request);
 
-        $user->email = $request->email;
-
-        $user->password = $request->password;
-
-        $user->save();
-
-        print ($request);
-
-        return redirect()->route('page.login');
     }
+    
 }
+
