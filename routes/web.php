@@ -20,9 +20,3 @@ Route::get('/', [pagesController::class, 'SignUp']);
 Route::post('forms.store', [formController::class, 'store'])->name('forms.store');
 
 Route::get('log', [pagesController::class, 'LogIn'])->name('page.login');
-
-Route::get('/Home', function(){
-
-    return view('Nav.Home');
-
-})->name('page.home');
