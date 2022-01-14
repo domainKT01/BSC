@@ -7,27 +7,22 @@
     <table class="table table-dark table-borderless">
         <thead>
             <tr>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">IMC</th>
+                <th scope="col">volemia</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>Nombre</td>
-                <td>categoria</td>
-                <td>volemia</td>
-            </tr>
-            <tr>
-                <td>@yield('Nombre')</td>
-                <td>@yield('categoria')</td>
-                <td>@yield('volemia')</td>
-            </tr>
-            <tr>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
+                <td>{{ $data['namePatient'] }}</td>
+                <td>{{ $data[$response] }}</td>
+                <td>{{ $data[$volemia] }}</td>
             </tr>
         </tbody>
     </table>
+    <div>
+        <h1 class="display-6">Display 6</h1>
+    </div>
     <link rel="stylesheet" type="text/css" href="apps.css" />
+
 @endsection

@@ -1,0 +1,22 @@
+
+.col-auto, #none {
+
+    padding: 10px;
+
+    margin-right: 10px;
+
+    font-family: cursive;
+    
+    font-style: oblique;
+}
+
+.btn {
+
+    padding: 10px;
+
+    margin: 5px 5px 5px 5px;
+
+    font-family: cursive;
+    
+    font-style: oblique;
+}

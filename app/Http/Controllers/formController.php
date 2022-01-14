@@ -8,55 +8,27 @@ use Illuminate\Http\Request;
 use Nette\Utils\Strings;
 use App\Http\Controllers\inData;
 use App\Models\calcular_IMC;
+use App\Models\insertData;
+use Illuminate\Foundation\Auth\User as AuthUser;
 
-class formController extends Controller{ 
-    
-    public function store(Request $request){
+class formController extends Controller
+{
 
-        $user = new User();
+    public function store(Request $request)
+    {
+
 
         if ($request->email){
 
-            $user->name = $request->name;
+            return insertData::insert_Data_user($request);
 
-            $user->email = $request->email;
+        } else if ($request->nombrePaciente) {
 
-            $user->password = $request->password;
+            return insertData::insert_Data_patient($request);
 
-            return redirect()->route('page.login');
+        } else {
+
+            return insertData::validate($request);
         }
-
-        else if ($request->talla) {
-            
-            $imc = new calcular_IMC();
-
-            $response = $imc->calculo(floatval($request->talla),floatval($request->peso));
-
-            $categoria = $imc->categorizar($response);
-
-            $volemia = $imc->volemia($request->talla, $request->peso, $request->value);
-
-            if ($volemia < 3500){
-
-                $apto = 'Apto';
-            }
-
-            else {
-
-                $apto = 'No Apto';
-            }
-
-            return view('Nav.response');
-        }
-
-        else{
-
-            $user->where('name', $request->name and 'password', $request->password);
-
-            return view('Nav.Home');
-        }
-
     }
-    
 }
-

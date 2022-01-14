@@ -16,7 +16,8 @@ class calcular_IMC extends Model
         
     }
 
-    public function categorizar($IMC){
+    public function categorizar($IMC)
+    {
 
         switch ($IMC){
 
@@ -52,20 +53,21 @@ class calcular_IMC extends Model
         }
     }
 
-    public function volemia($talla, $peso, $sexo){
+    public function volemia($talla, $peso, $sexo)
+    {
 
         $volemiaM = 0.3669 * ($talla ** 3) + (0.03219 * $peso) + 0.6041;
 
         $volemiaF = 0.3561 * ($talla ** 3) + (0.03308 * $peso) + 0.1833;
 
-        if ($sexo == 1 ){
+        if ($sexo == 'Hombre' ){
 
-            return $volemiaF;
+            return $volemiaM;
         }
 
         else {
 
-            return $volemiaM;
+            return $volemiaF;
         }
     }
 }
