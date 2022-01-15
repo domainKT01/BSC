@@ -5,13 +5,13 @@
 @section('header')
 
 
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center" action="{{ route('forms.store') }}" method="POST">
 
 	<button type="button" class="btn btn-dark">Inicio</button>
 
 	<button type="button" class="btn btn-dark">Acerca de Nosotros</button>
 
-	<button type="button" class="btn btn-dark"> Iniciar sesion</button>
+	<button type="button" class="btn btn-dark">Iniciar sesion</button>
 
 </div>
 

@@ -31,11 +31,13 @@ class insertData extends Model
     public static function insert_Data_patient($request)
     {
 
-        $user = new User();
+        $user1 = new User();
+
+        $user1->setTable('patients');
 
         $imc = new calcular_IMC();
 
-        #$user->setTable('patients');
+        $user1->setTable('patients');
 
         $response = $imc->calculo(floatval($request->talla), floatval($request->peso));
 
@@ -43,19 +45,21 @@ class insertData extends Model
 
         $volemia = $imc->volemia($request->talla, $request->peso, $request->sexo);
 
-        $user->nombre = $request->nombrePaciente;
+        $user1->nombre = $request->nombrePaciente;
 
         $namePatient = $request->nombrePaciente;
 
+        $apto = '';
+
         if ($request->sexo) {
 
-            $user->sexo = $request->sexo;
+            $user1->sexo = $request->sexo;
 
-            $user->imc = $response;
+            $user1->imc = $response;
 
-            $user->volemia = $volemia;
+            $user1->volemia = $volemia;
 
-            if ($volemia < 3500) {
+            if ($volemia >= 3500) {
 
                 $apto = 'Apto';
             }
@@ -64,46 +68,37 @@ class insertData extends Model
             $apto = 'No Apto';
         }
 
-        $data = array('namePatient', 'response', 'volemia', 'apto');
+        $user1->save();
 
-        $user->save();
-
-        return view('Nav.response', compact('data'));
+        return view('Nav.response', compact('namePatient', 'response', 'volemia', 'apto', 'categoria'));
     }
 
     public static function validate($request)
     {
 
-        $user = new User();
+        $user2 = new User();
 
-        $responseName = $user->select('id')->where('name', $request->name)->get();
+        $responseName = $user2->select('id')->where('name', $request->name)->get();
 
-        $responsePassword = $user->select('id')->where('password', $request->password)->get();
+        $responsePassword = $user2->select('id')->where('password', $request->password)->get();
 
-        if (empty($response)) {
+        if (empty($responseName)) {
 
             $responseName = null;
         }
 
         if ($responseName != $responsePassword) {
 
-            $n = 'Usuario o Contraseña invalido';
-
             echo "<script>
 
             alert('invalido ingreso');
-            
-            function muestraInformacion(elEvento) {
-                var evento = elEvento;
-                var coordenadaX = evento.clientX;
-                var coordenadaY = evento.clientY;
 
-                location.reload();
-              }
-              
-              document.onclick = muestraInformacion;
-              
-              </script>";
+            </script>
+
+            ";
+
+            return view('Nav.LogIn');
+
         } else {
 
             return view('Nav.Home');

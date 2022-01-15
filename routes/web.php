@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\pagesController;
 use App\Http\Controllers\formController;
+use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [pagesController::class, 'SignUp']);
 
+Route::get('login', [LoginController::class]);
+
 Route::post('forms.store', [formController::class, 'store'])->name('forms.store');
 
 Route::get('log', [pagesController::class, 'LogIn'])->name('page.login');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

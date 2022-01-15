@@ -10,7 +10,7 @@
 
 	<button type="button" class="btn btn-dark">Acerca de Nosotros</button>
 
-	<button type="button" class="btn btn-dark"> Iniciar sesion</button>
+	<button type="button" class="btn btn-dark">Registrarse</button>
 
 </div>
 

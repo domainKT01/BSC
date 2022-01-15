@@ -24,7 +24,9 @@ class formController extends Controller
 
         } else if ($request->nombrePaciente) {
 
-            return insertData::insert_Data_patient($request);
+            $response2 = insertData::insert_Data_patient($request);
+
+            return $response2;
 
         } else {
 
