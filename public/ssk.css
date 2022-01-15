@@ -20,3 +20,16 @@
     
     font-style: oblique;
 }
+
+#idLabel {
+
+    color: red;
+
+    padding: 10px;
+
+    margin-right: 10px;
+
+    font-family: cursive;
+    
+    font-style: oblique;
+}

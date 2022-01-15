@@ -76,13 +76,37 @@ class insertData extends Model
 
         $user = new User();
 
-        $response = $user->where('name', $request->name and 'password', $request->password)->get();
+        $responseName = $user->select('id')->where('name', $request->name)->get();
 
-        if ($response == []){
+        $responsePassword = $user->select('id')->where('password', $request->password)->get();
 
-            return  '';
+        if (empty($response)) {
+
+            $responseName = null;
         }
 
-        return gettype($response);
+        if ($responseName != $responsePassword) {
+
+            $n = 'Usuario o Contraseña invalido';
+
+            echo "<script>
+
+            alert('invalido ingreso');
+            
+            function muestraInformacion(elEvento) {
+                var evento = elEvento;
+                var coordenadaX = evento.clientX;
+                var coordenadaY = evento.clientY;
+
+                location.reload();
+              }
+              
+              document.onclick = muestraInformacion;
+              
+              </script>";
+        } else {
+
+            return view('Nav.Home');
+        }
     }
 }
