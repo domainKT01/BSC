@@ -19,10 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [pagesController::class, 'SignUp']);
 
-Route::get('login', [LoginController::class]);
-
 Route::post('forms.store', [formController::class, 'store'])->name('forms.store');
 
-Route::get('log', [pagesController::class, 'LogIn'])->name('page.login');
+Route::get('{data}', [pagesController::class, 'LogIn'])->name('login');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

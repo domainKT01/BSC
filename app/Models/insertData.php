@@ -49,7 +49,7 @@ class insertData extends Model
 
         $namePatient = $request->nombrePaciente;
 
-        $apto = '';
+        $apto = 'apto';
 
         if ($request->sexo) {
 
@@ -69,6 +69,8 @@ class insertData extends Model
         }
 
         $user1->save();
+
+        
 
         return view('Nav.response', compact('namePatient', 'response', 'volemia', 'apto', 'categoria'));
     }
