@@ -73,20 +73,18 @@ class insertData extends Model
             $user1->imc = $response;
 
             $user1->volemia = $volemia;
+        }
 
-            if ($volemia >= 3500) {
+        if ($volemia >= 3.5) {
 
-                $apto = 'Apto';
-            }
+            $apto = 'Apto';
         } else {
 
             $apto = 'No Apto';
         }
 
         $user1->save();
-
-
-
+    
         return view('Nav.response', compact('namePatient', 'response', 'volemia', 'apto', 'categoria'));
     }
 
