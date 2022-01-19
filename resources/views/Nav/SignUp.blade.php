@@ -4,6 +4,13 @@
 
 @section('header')
 
+<style type="text/css">
+	a:link,
+	a:visited,
+	a:active {
+		text-decoration: none;
+	}
+</style>
 
 <div class="d-flex justify-content-center">
 
@@ -11,7 +18,7 @@
 
 	<button type="button" class="btn btn-dark">Acerca de Nosotros</button>
 
-	<button type="button" class="active btn btn-dark" ><a href="login">iniciar sesion</a></button>
+	<button type="button" class="active btn btn-dark"><a href="login">iniciar sesion</a></button>
 
 </div>
 

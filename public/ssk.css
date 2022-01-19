@@ -10,6 +10,11 @@
     font-style: oblique;
 }
 
+.active {
+
+    text-decoration: none;
+}
+
 .btn {
 
     padding: 10px;

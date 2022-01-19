@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User;
@@ -15,17 +16,31 @@ class insertData extends Model
     public static function insert_Data_user($request)
     {
 
-        $user = new User();
+        try {
 
-        $user->name = $request->name;
+            $user = new User();
 
-        $user->email = $request->email;
+            $user->name = $request->name;
 
-        $user->password = $request->password;
+            $user->email = $request->email;
 
-        $user->save();
+            $user->password = $request->password;
 
-        return redirect()->route('page.login');
+            $user->save();
+
+            return redirect()->route('login');
+        } catch (Exception $e) {
+
+            echo "<script>
+
+            alert('Nombre o Correo ya existe');
+
+            </script>
+
+            ";
+
+            return view('Nav.SignUp');
+        }
     }
 
     public static function insert_Data_patient($request)
@@ -70,7 +85,7 @@ class insertData extends Model
 
         $user1->save();
 
-        
+
 
         return view('Nav.response', compact('namePatient', 'response', 'volemia', 'apto', 'categoria'));
     }
@@ -100,7 +115,6 @@ class insertData extends Model
             ";
 
             return view('Nav.LogIn');
-
         } else {
 
             return view('Nav.Home');

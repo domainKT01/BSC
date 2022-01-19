@@ -21,6 +21,21 @@ Route::get('/', [pagesController::class, 'SignUp']);
 
 Route::post('forms.store', [formController::class, 'store'])->name('forms.store');
 
-Route::get('{data}', [pagesController::class, 'LogIn'])->name('login');
+Route::get('{data}', function($data){
+
+    if ($data == "login"){
+
+        $d = new pagesController();
+
+        return $d->LogIn();
+    }
+
+    else {
+
+        $d = new pagesController();
+
+        return $d->SignUp();
+    }
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
